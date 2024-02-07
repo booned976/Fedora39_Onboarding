@@ -1,10 +1,10 @@
-Applies to: 
+**Applies to:** 
   Fedora 39
 
-Description:
+**Description:**
   This script is used to create user, configure system settings, install repositories, perform fresh install tasks such as updates and upgrades, and install desired applications via stand alone / flatpak / snap.
   
-Tasks:
+**Tasks:**
   - Create user (default is "dboone")
   - Add user to group "wheel"
   - Set hostname (default is "Obsidian-Mini")

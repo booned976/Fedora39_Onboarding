@@ -110,7 +110,6 @@ printf "\n  -->\e[1;${CYAN}m Update and upgrade to Fedora 39 \e[0m<-- \n"
 sudo dnf update -y
 sudo dnf upgrade --refresh
 sudo dnf install dnf-plugin-system-upgrade -y
-sudo dnf system-upgrade download --releasever=39 -y
 
 printf "\n"
 printf "\n"
@@ -294,10 +293,11 @@ sudo flatpak install fluentreader -y
 printf "\n"
 printf "\n"
 
-printf "\n  -->\e[1;${CYAN}m Install VS Codium \e[0m<-- \n"
-sudo rpmkeys --import https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/-/raw/master/pub.gpg
-echo "[gitlab.com_paulcarroty_vscodium_repo]\nname=download.vscodium.com\nbaseurl=https://download.vscodium.com/rpms/\nenabled=1\ngpgcheck=1\nrepo_gpgcheck=1\ngpgkey=https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/-/raw/master/pub.gpg\nmetadata_expire=1h" | sudo tee -a /etc/yum.repos.d/vscodium.repo
-sudo dnf install codium -y
+printf "\n  -->\e[1;${CYAN}m Install VS-Code \e[0m<-- \n"
+sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
+sudo sh -c 'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" > /etc/yum.repos.d/vscode.repo'
+dnf check-update -y
+sudo dnf install code -y
 
 printf "\n"
 printf "\n"
@@ -330,7 +330,7 @@ printf "\n"
 printf "\n"
 
 printf "\n  -->\e[1;${CYAN}m Install Discord \e[0m<-- \n"
-sudo dnf install discord-0.0.40-1.fc39.x86_64 -y
+sudo flatpak install discord -y
 
 printf "\n"
 printf "\n"
@@ -408,51 +408,3 @@ cpufetch
 printf "\n"
 printf "\n"
 printf "\n"
-
-
-# Windows 11 Pro install
-    # Setup
-        # Time and currency format: English (World)
-        # Initial startup error, skip it
-        # Personal use account
-        # Name: Obsidian-Win11
-        # Password: blank (skips security questions)
-    
-    # Titus install
-        # irm christitus.com/win | iex
-        # Install Brave browser
-        # After Brave install completes add the following tweaks
-            # Essential Tweaks
-                # Create restore point
-                # Run OO shutup
-                # Disable telemetry
-                # Disable Wifi-sense
-                # Disable activity history
-                # .. location tracking
-                # .. homegroup
-                # .. storage sense
-                # .. hibernation
-                # .. gameDVR
-                # Set services to manual
-                # Dark theme on
-                # Bing search in start menu on
-
-            # Misc. Tweaks
-                # Disable power throttling
-                # Enable NumLock on Startup
-                # Remove Cortana
-                # Remove Microsoft Edge
-
-        # Reboot
-        # Should have about 84 processes in task manager
-
-# Also try bloatynosy to remove more bloat after
-
-
-
-
-
-
-
-
-

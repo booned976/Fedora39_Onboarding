@@ -54,5 +54,5 @@ Tasks:
       - ascii-image-converter *
       - lolcat
       - mc
-   
-    - Display neofetch and cpufetch specifications when completed
+        
+- Display neofetch and cpufetch specifications when completed
